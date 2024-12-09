@@ -1,0 +1,187 @@
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.search {
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 2px;
+    width: 500px;
+    text-align: center;
+    font-size: large;
+    transition: 0.5s ease-in;
+
+}
+
+input::-webkit-search-cancel-button {
+    display: none;
+}
+
+input::placeholder {
+    color: gray;
+    font-size: 14px;
+}
+
+#icons {
+    position: relative;
+    right: 30px;
+    font-size: larger;
+}
+
+div img {
+    width: 100px;
+    height: 100px
+}
+
+header div button {
+    background-color: aqua;
+    padding: 10px;
+}
+
+#s2 {
+    margin-left: 500px;
+}
+
+#s2 h3 {
+    padding-left: 10px;
+}
+
+#flex1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.language {
+    border: 1px solid rgb(245, 106, 106);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.bg {
+    background-color: rgb(119, 119, 210);
+}
+
+.movie_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 50px;
+    margin-right: 10px;
+    transition: 0.5s ease-out;
+}
+
+.movies {
+    padding-left: 30px;
+    transition: 0.5s ease-out;
+}
+
+.movies img {
+    width: 300px;
+    height: 300px;
+
+}
+
+.movies h3,
+p {
+    text-align: center;
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+
+    /* CSS rules for mobile landscape */
+
+    .search {
+        padding: 20px;
+        border-radius: 2px;
+        width: 200px;
+        font-size: 14px;
+        transition: 0.5s ease-in;
+
+    }
+
+    #s2 {
+        margin-left: 30px;
+    }
+
+    #s2 h3 {
+        padding-left: 0px;
+    }
+
+    .movie_list {
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+
+    .movies {
+        padding-left: 0px;
+        display: inline-block;
+
+    }
+
+    .movies img {
+        width: 150px;
+        height: 200px;
+        transition: 0.5s ease-in-out;
+    }
+
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+
+    /* CSS rules for tablets */
+    .search {
+        padding: 20px;
+        border: 1px solid black;
+        border-radius: 2px;
+        width: 300px;
+        font-size: 14px;
+        transition: 0.5s ease-in;
+
+    }
+
+    #s2 {
+        margin-left: 50px;
+    }
+
+    #s2 h3 {
+        padding-left: 0px;
+    }
+
+    .movie_list {
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+
+    .movies {
+        padding-left: 0px;
+        display: inline-block;
+
+    }
+
+    .movies img {
+        width: 150px;
+        height: 200px;
+        transition: 0.5s ease-in-out;
+    }
+
+}
+
+@media screen and (min-width: 1201px) {
+
+    /* CSS rules for large desktops */
+
+
+    #s2 {
+        margin-left: 200px;
+    }
+
+    .movies img {
+        transition: 0.5s ease-in-out;
+    }
+
+}

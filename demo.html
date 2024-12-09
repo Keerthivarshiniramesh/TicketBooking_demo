@@ -1,0 +1,41 @@
+<div class="scroll-container">
+    <div class="scroll-text">
+        This is scrolling text created using only CSS!
+    </div>
+</div>
+<style>
+    .scroll-container {
+        width: 100%;
+        /* Adjust to the width of the container */
+        overflow: hidden;
+        /* Hide the text outside the container */
+        white-space: nowrap;
+        /* Prevent text from wrapping */
+        background-color: #f0f0f0;
+        /* Optional background for visibility */
+        border: 1px solid #ccc;
+        /* Optional border */
+    }
+
+    .scroll-text {
+        display: inline-block;
+        /* Keeps text inline for horizontal scrolling */
+        padding-left: 100%;
+        /* Start the text outside the visible container */
+        animation: scroll 10s linear infinite;
+        /* Apply scrolling animation */
+    }
+
+    /* Define the keyframes for scrolling */
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+            /* Start at the initial position */
+        }
+
+        100% {
+            transform: translateX(-100%);
+            /* End off the container */
+        }
+    }
+</style>

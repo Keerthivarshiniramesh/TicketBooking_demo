@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selection</title>
+    <style>
+        .selected {
+            background-color: rgb(2, 156, 79);
+            color: white;
+        }
+
+        a {
+            padding: 6px 10px;
+            border: 1px solid rgb(56, 243, 134);
+            border-radius: 5px;
+            color: rgb(8, 8, 8);
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        #total_amount {
+            margin-top: 20px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section style="margin: 50px;">
+            <table class="tables" data-price="190">
+                <tr>
+                    <td>
+                        <a class="seat">1</a>
+                        <a class="seat">2</a>
+                        <a class="seat">3</a>
+                        &nbsp;&nbsp;
+                        <a class="seat">4</a>
+                        <a class="seat">5</a>
+                        <a class="seat">6</a>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <section style="margin: 50px;">
+            <table class="tables" data-price="150">
+                <tr>
+                    <td>
+                        <a class="seat">1</a>
+                        <a class="seat">2</a>
+                        <a class="seat">3</a>
+                        &nbsp;&nbsp;
+                        <a class="seat">4</a>
+                        <a class="seat">5</a>
+                        <a class="seat">6</a>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <section style="margin: 50px;">
+            <table class="tables" data-price="100">
+                <tr>
+                    <td>
+                        <a class="seat">1</a>
+                        <a class="seat">2</a>
+                        <a class="seat">3</a>
+                        &nbsp;&nbsp;
+                        <a class="seat">4</a>
+                        <a class="seat">5</a>
+                        <a class="seat">6</a>
+                    </td>
+                </tr>
+            </table>
+            <div id="total_amount"></div>
+        </section>
+    </main>
+
+    <script>
+        let seats = document.querySelectorAll(".seat");
+        let totalAmountDiv = document.getElementById("total_amount");
+
+        seats.forEach(seat => {
+            seat.addEventListener("click", function () {
+                seat.classList.toggle("selected");
+                updateTotal();
+            });
+        });
+
+        function updateTotal() {
+            let total = 0;
+            document.querySelectorAll(".selected").forEach(seat => {
+                let table = seat.closest(".tables");
+                let price = parseInt(table.dataset.price);
+                total += price;
+            });
+
+            totalAmountDiv.innerHTML = total > 0 ? `<h5>Pay ${total}</h5>` : '';
+        }
+    </script>
+</body>
+
+</html>

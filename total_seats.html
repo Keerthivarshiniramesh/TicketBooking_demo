@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total seats</title>
+
+    <style>
+        body {
+            background-image: url("t1.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+
+
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            font-size: larger;
+        }
+
+        #counts {
+            font-size: medium;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <form>
+        <label>Seats Number : </label>
+        <select id="counts">
+            <option>Total Seats</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select><br>
+    </form>
+
+    <script>
+        let tickets = document.getElementById("counts")
+        tickets.addEventListener("change", function () {
+            let num = tickets.value
+            console.log("The value is ", num)
+            localStorage.setItem("selectedOption", num)
+            window.location.href = "updated_seat.html"
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        main {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("images.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        img {
+            margin: 50px;
+            position: relative;
+        }
+
+        .main1 {
+            display: flex;
+            justify-content: left;
+
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            margin-top: 150px;
+            background-color: aquamarine;
+            font-weight: 700;
+        }
+
+        span {
+            position: absolute;
+            top: 180px;
+            left: 150px;
+        }
+
+        a {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="main1">
+            <div class="trailor">
+                <img src="mei.jpeg" height="300px">
+                <a href="https://www.youtube.com/watch?v=YGJOcMtnG1Q"><span><i
+                            class="fa-solid fa-circle-play fa-xl"></i></span></a>
+            </div>
+            <button id="button">Book Tickets</button>
+
+        </div>
+    </main>
+</body>
+
+<script>
+    document.getElementById("button").addEventListener("click", () => {
+        window.location.href = "total_seats.html"
+    })
+</script>
+
+</html>

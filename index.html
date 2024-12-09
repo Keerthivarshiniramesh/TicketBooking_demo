@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Ticket Booking</title>
+    <link rel="stylesheet" href="onlineticket.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <div>
+            <img src="./book my img.png">
+        </div>
+        <div style="display: flex;align-items: center;">
+            <input type="search" placeholder="Search for movies,events,plays and Activities" class="search">
+            <i class="fa-solid fa-magnifying-glass" id="icons"></i>
+
+        </div>
+        <div>
+            <button>SIGN IN</button>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <img src="paytm.jpeg" width="100%">
+        </section>
+
+        <section id="s2">
+            <h3>Movies In Erode</h3>
+            <div id="flex1">
+                <div class="language">
+                    Tamil
+                </div>
+
+                <div class="language">
+                    English
+                </div>
+
+                <div class="language">
+                    Telugu
+                </div>
+            </div>
+
+            <div class="movie_list">
+                <div class="movies">
+                    <a href="movie_details.html"><img src="mei.jpeg"></a>
+                    <h3>Meiyalazan</h3>
+
+                    <p class="para">Tamil</p>
+                </div>
+
+                <div class="movies">
+                    <a href="movie_details.html"><img src="amaran.jpeg"></a>
+                    <h3>Amaran</h3>
+
+                    <p class="para">Tamil</p>
+                </div>
+                <div class="movies">
+                    <a href="movie_details.html"><img src="vettaiyan.jpeg"></a>
+                    <h3>vettaiyan</h3>
+
+                    <p class="para">Tamil</p>
+                </div>
+                <div class="movies">
+                    <a href="movie_details.html"><img src="pushpa.jpeg"></a>
+                    <h3>pushpa</h3>
+
+                    <p class="para">Telugu</p>
+                </div>
+
+                <div class="movies">
+                    <a href="movie_details.html"><img src="lucky.jpeg"></a>
+                    <h3>Lucky Bhaskar</h3>
+
+                    <p class="para">Telugu</p>
+                </div>
+                <div class="movies">
+                    <a href="movie_details.html"><img src="venom.jpeg"></a>
+                    <h3>venom</h3>
+
+                    <p class="para">English</p>
+                </div>
+                <div class="movies">
+                    <a href="movie_details.html"><img src="mona.jpeg"></a>
+                    <h3>Mona 2</h3>
+
+                    <p class="para">English</p>
+                </div>
+                <div class="movies">
+                    <a href="movie_details.html"><img src="./mufasa.jpeg"></a>
+                    <h3>Mufasa</h3>
+
+                    <p class="para">English</p>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+</body>
+
+<script>
+    let button = Array.from(document.getElementsByClassName("language"))
+
+    button.forEach(fill => {
+        fill.addEventListener("click", () => {
+            button.forEach(f => f.classList.remove("bg"))
+            fill.classList.add("bg")
+
+            let movies = Array.from(document.getElementsByClassName("movies"))
+            console.log(movies)
+
+            let langu = button.filter(fill => fill.classList.contains("bg")).map(lan => lan.textContent.trim())
+            console.log(langu)
+
+
+            if (langu.length === 0) {
+                movies.forEach(movie => {
+                    movie.style.display = "block";
+                });
+            } else {
+
+                movies.forEach(movie => {
+                    list = movie.querySelector("p").textContent.trim()
+                    if (langu.includes(list)) {
+                        movie.style.display = "block"
+                    }
+                    else {
+                        movie.style.display = "none"
+                    }
+                })
+            }
+        })
+    })
+
+
+</script>
+
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selection</title>
+    <style>
+        body {
+            background-image: url("bg.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 1;
+        }
+
+        .selected {
+            background-color: rgb(2, 156, 79);
+            color: white;
+        }
+
+        a {
+            padding: 6px 10px;
+            border: 1px solid rgb(56, 243, 134);
+            border-radius: 5px;
+            color: rgb(8, 8, 8);
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        h4 {
+            color: rgb(104, 102, 102);
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        .amt {
+            margin-top: 20px;
+            font-size: 20px;
+            /* border: solid rgb(243, 160, 151); */
+            background-color: white;
+            text-align: center;
+            display: inline-block;
+            padding: 0px 5px 0px 5px;
+
+        }
+
+        .disabled {
+            pointer-events: none;
+            /* Prevents all interactions */
+            opacity: 0.5;
+            /* Makes it appear disabled */
+        }
+
+        @media screen and (min-width:481px) and (max-width: 767px) {
+            .c1 {
+                display: none;
+                transition: 0.5s ease-out;
+
+            }
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 1200px) {
+            .c1 {
+                display: none;
+                transition: 0.5s ease-out;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section style="margin: 120px 100px 0px 100px; text-align: center; ">
+            <h5>Platinum: 190</h5>
+            <table class="tables" data-price="190" style="margin: 0 auto;">
+                <tr>
+                    <td>
+                        <a class="seat">1</a>
+                        <a class="seat">2</a>
+                        <a class="seat">3</a>
+                        <a class="seat">4</a>
+                        <a class="seat">5</a>
+                        <a class="seat">6</a>
+                        &nbsp;&nbsp;
+                        <a class="seat c1">7</a>
+                        <a class="seat c1">8</a>
+                        <a class="seat c1">9</a>
+                        <a class="seat c1">10</a>
+                        <a class="seat c1">11</a>
+                        <a class="seat c1">12</a>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <section style="margin: 50px; text-align: center;">
+            <h5>Gold: 150</h5>
+            <table class="tables" data-price="150" style="margin: 0 auto;">
+                <tr>
+                    <td>
+                        <a class="seat">1</a>
+                        <a class="seat">2</a>
+                        <a class="seat">3</a>
+                        <a class="seat">4</a>
+                        <a class="seat">5</a>
+                        <a class="seat">6</a>
+                        &nbsp;&nbsp;
+                        <a class="seat c1">7</a>
+                        <a class="seat c1">8</a>
+                        <a class="seat c1">9</a>
+                        <a class="seat c1">10</a>
+                        <a class="seat c1">11</a>
+                        <a class="seat c1">12</a>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <section style="margin: 50px; text-align: center;">
+            <h5>Silver: 100</h5>
+            <table class="tables" data-price="100" style="margin: 0 auto;">
+                <tr>
+                    <td>
+                        <a class="seat">1</a>
+                        <a class="seat">2</a>
+                        <a class="seat">3</a>
+                        <a class="seat">4</a>
+                        <a class="seat">5</a>
+                        <a class="seat">6</a>
+                        &nbsp;&nbsp;
+                        <a class="seat c1">7</a>
+                        <a class="seat c1">8</a>
+                        <a class="seat c1">9</a>
+                        <a class="seat c1">10</a>
+                        <a class="seat c1">11</a>
+                        <a class="seat c1">12</a>
+                    </td>
+                </tr>
+            </table>
+
+            <div id="total_amount">
+
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let seats = Array.from(document.querySelectorAll(".seat"));
+        let totalAmountDiv = document.getElementById("total_amount");
+        let count = localStorage.getItem("selectedOption")
+        console.log(count)
+
+        seats.forEach((seat, index) => {
+            seat.addEventListener("click", function () {
+                autoUpdate(index)
+                updateTotal()
+            });
+        });
+
+        function updateTotal() {
+            let total = 0;
+            document.querySelectorAll(".selected").forEach(seat => {
+                let table = seat.closest(".tables");
+                let price = parseInt(table.dataset.price);
+                total += price;
+            });
+
+            if (total > 0) {
+                totalAmountDiv.innerHTML = `<p>Pay ${total}</p>`;
+                totalAmountDiv.classList.add("amt");
+            } else {
+                totalAmountDiv.innerHTML = '';
+                totalAmountDiv.classList.remove("amt");
+            }
+
+        }
+
+
+
+
+        let c = 0
+        function autoUpdate(index) {
+            // Reset the selected count when called
+            c = 0;
+
+            // Deselect all seats
+            seats.forEach(seat => seat.classList.remove("selected"));
+
+            // Select seats up to the count after deselecting
+            let seatsUpdate = seats.slice(index); // Convert NodeList to Array
+            seatsUpdate.forEach((seat) => {
+
+                if (c < count) {  // Only select seats up to the count
+                    seat.classList.add("selected");
+                    c++;
+                } else {
+                    return;  // Stop selecting once the count is reached
+                }
+            });
+        }
+
+        totalAmountDiv.addEventListener("click", () => {
+
+
+            seats.forEach(seat => {
+                if (seat.classList.contains("selected")) {
+                    seat.classList.add("disabled")
+                }
+            });
+            // alert("Payment Successfull")
+            seats.forEach(seat => {
+                if (!seat.classList.contains("disabled")) {
+                    seat.classList.add("disabled")
+                }
+            })
+
+
+        })
+
+
+
+    </script>
+</body>
+
+</html>
